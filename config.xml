@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns   = "http://www.w3.org/ns/widgets"
+    xmlns:gap   = "http://phonegap.com/ns/1.0"
+    id          = "com.nyandev.vipbitcoin"
+    versionCode = "1"
+    version     = "0.2.1" >
+
+  <name>VIP Price</name>
+
+  <description>
+      VIP Bitcoin Price Realtime Market
+  </description>
+
+  <author href="https://facebook.com/ryan.hac" email="ryandevstudio@gmail.com">
+      Ryan Aunur Rassyid
+  </author>
+  
+  <preference name="permissions" value="none"/>
+  <preference name="AutoHideSplashScreen" value="true"/>
+
+  <!-- Plugins -->
+  <plugin name="cordova-plugin-admobpro" spec="2.29.29" />
+  <plugin name="cordova-plugin-whitelist" source="npm"/>
+  <plugin name="cordova-plugin-extension" source="npm" />
+  <plugin name="cordova-plugin-device" spec="2.0.0"/>
+
+  <access origin="*"/>
+
+  <platform name="android">
+      <preference name="android-minSdkVersion" value="19" /> <!-- Kitkat -->
+  </platform>
+
+  <allow-intent href="http://*/*" />
+  <allow-intent href="https://*/*" />
+  <allow-intent href="tel:*" />
+  <allow-intent href="sms:*" />
+  <allow-intent href="mailto:*" />
+
+
+</widget>
