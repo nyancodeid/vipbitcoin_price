@@ -1,12 +1,15 @@
 var $ = Dom7;
 
 // Init App
-var app = new Framework7({
+var myApp = new Framework7({
 	id: 'io.framework7.testapp',
 	root: '#app',
 	theme: 'auto'
 });
+myApp.dialog.progress();
+
 var isRupiah = function(pair) {
+
 	return (pair.substr(pair.length - 3) == "idr") ? true : false;
 }
 var toRupiah = function(angka) {
@@ -60,6 +63,11 @@ var renderData = function(res) {
 var apps = angular.module('application', []);
 
 apps.controller('ngController', ['$scope', '$http', function ($scope, $http) {
+	$scope.filter = {
+		isIdr: true,
+		isBitcoin: true
+	}
+
 	if (nyanStorage.isAvailable('prevData')) {
 		$scope.prices = renderData(nyanStorage.get('prevData'));
 	} else {
@@ -81,6 +89,7 @@ apps.controller('ngController', ['$scope', '$http', function ($scope, $http) {
 					$(this).removeClass('up').removeClass('down');
 				});
 			}, 500);
+			myApp.dialog.close();
 
 			var pusher_tradedata = pusher.subscribe('tradedata-btcidr');
 				pusher_tradedata.bind('update', function (res) {
@@ -97,5 +106,12 @@ apps.controller('ngController', ['$scope', '$http', function ($scope, $http) {
 				});
 		}
 	});
+
+	/**
+	 * Method
+	 */
+	$scope.openFilterDialog = function() {
+		myApp.popup.open($('#my-popup'));
+	}
 }]);
 
