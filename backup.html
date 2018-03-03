@@ -1,0 +1,67 @@
+<div class="block-title">Sortir berdasarkan</div>
+<div class="row">
+    <div class="col">
+        <div class="list">
+            <ul>
+                <li>
+                    <label class="item-radio item-content">
+                        <input type="radio" name="shorterWith" value="Books" checked="">
+                        <i class="icon icon-radio"></i>
+                        <div class="item-inner">
+                            <div class="item-title">Price</div>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <label class="item-radio item-content">
+                        <input type="radio" name="shorterWith" value="Movies">
+                        <i class="icon icon-radio"></i>
+                        <div class="item-inner">
+                            <div class="item-title">Volume</div>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <label class="item-radio item-content">
+                        <input type="radio" name="shorterWith" value="Food">
+                        <i class="icon icon-radio"></i>
+                        <div class="item-inner">
+                            <div class="item-title">% Change</div>
+                        </div>
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col">
+        <div class="list">
+            <ul>
+                <li>
+                    <label class="item-radio item-content">
+                        <input type="radio" name="shorterBy" value="Books" checked="">
+                        <i class="icon icon-radio"></i>
+                        <div class="item-inner">
+                            <div class="item-title">Ter-tinggi</div>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <label class="item-radio item-content">
+                        <input type="radio" name="shorterBy" value="Movies">
+                        <i class="icon icon-radio"></i>
+                        <div class="item-inner">
+                            <div class="item-title">Ter-rendah</div>
+                        </div>
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="block-title">Pairs</div>
+<div class="block small-block">
+    <div class="chip" ng-repeat="pair in pairs">
+        <div class="chip-label">{{ pair | uppercase }}</div>
+        <a href="#" class="chip-delete" ng-click="deletePair(pair)"></a>
+    </div>
+</div>

@@ -167,5 +167,8 @@ apps.controller('ngController', ['$scope', '$http', 'services', function ($scope
 	$scope.deletePair = function(pair) {
 		console.log(pair);
 	}
+	$scope.toggleTheme = function(params) {
+		$('body').toggleClass('theme-dark');
+	}
 }]);
 

@@ -91,11 +91,17 @@
 .price-item {
     transition: .2s ease-out;
 }
-.price-item.up {
+body:not(.theme-dark) .price-item.up {
     background-color: #74ff7a!important;
 }
-.price-item.down {
+body:not(.theme-dark) .price-item.down {
     background-color: #ffaf96!important;    
+}
+body.theme-dark .price-item.up {
+    background-color: #009688 !important;
+}
+body.theme-dark .price-item.down {
+    background-color: #FF5722 !important;
 }
 
 .block.small-block {
