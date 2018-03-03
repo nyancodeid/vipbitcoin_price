@@ -98,4 +98,7 @@
     background-color: #ffaf96!important;    
 }
 
+.block.small-block {
+    padding: 8px !important;
+}
 
