@@ -104,6 +104,8 @@ apps.controller('ngController', ['$scope', '$http', 'services', function ($scope
 		isBitcoin: true
 	};
 	$scope.pairs = [];
+
+	$('#overlay-preloader').hide();
 	
 	if (nyanStorage.isAvailable('filter')) {
 		$scope.filter = nyanStorage.get('filter');
