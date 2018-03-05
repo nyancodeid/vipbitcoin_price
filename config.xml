@@ -3,9 +3,9 @@
     xmlns:gap   = "http://phonegap.com/ns/1.0"
     id          = "com.nyandev.vipbitcoin"
     versionCode = "1"
-    version     = "0.2.1" >
+    version     = "1.1.1" >
 
-  <name>VIP Price</name>
+  <name>BitPrices</name>
 
   <description>
       VIP Bitcoin Price Realtime Market
