@@ -23,6 +23,7 @@
   <plugin name="cordova-plugin-whitelist" source="npm"/>
   <plugin name="cordova-plugin-extension" source="npm" />
   <plugin name="cordova-plugin-device" spec="2.0.0"/>
+  <plugin name="cordova-plugin-google-analytics" spec="1.8.3"/>
 
   <access origin="*"/>
 

@@ -21,7 +21,7 @@
             <!-- Top Navbar -->
             <div class="navbar">
                 <div class="navbar-inner">
-                    <div class="title sliding">Prices</div>
+                    <div class="title sliding">Real Time Prices</div>
                     <div class="right">
                         <a href="" class="link icon-only" ng-click="toggleTheme()">
                             <i class="material-icons">palette</i>
@@ -119,21 +119,19 @@
     </script>
     <script src="vendors/cacher/cacher.js"></script>
     <script>
-        var appVersion = "0.1.23";
+        var appVersion = "0.1.27";
+        var production = true;
         var pusher;
 
         requireScript('f7', appVersion, 'vendors/f7/js/framework7.min.js', function() {
-            requireScript('angular', appVersion, 'vendors/angular/angular.min.js');
-            requireScript('nyanStorage', appVersion, 'vendors/nyanStorage/nyanStorage.min.js');
-            requireScript('pusher', appVersion, 'vendors/pusher/pusher.min.js', function() {
-                pusher = new Pusher('a0dfa181b1248b929b11', {
-                    cluster: 'ap1',
-                    encrypted: true
-                });
-            });  
-        });
+        requireScript('angular', appVersion, 'vendors/angular/angular.min.js', function() {
+        requireScript('nyanStorage', appVersion, 'vendors/nyanStorage/nyanStorage.min.js', function() {
+        requireScript('pusher', appVersion, 'vendors/pusher/pusher.min.js', function () {
+            if (production) {
+                requireScript('main', appVersion, 'static/main.js');
+            }
+        });});});});
     </script>
-
-	<script defer src="static/main.js"></script>
+    <!-- <script defer src="static/main.js"></script> -->
 </body>
 </html>

@@ -134,6 +134,11 @@ apps.controller('ngController', ['$scope', '$http', 'services', function ($scope
 			}, 500);
 			myApp.dialog.close();
 
+			var pusher = new Pusher(atob('YTBkZmExODFiMTI0OGI5MjliMTE='), {
+				cluster: 'ap1',
+				encrypted: true
+			});
+
 			var pusher_tradedata = pusher.subscribe('tradedata-btcidr');
 				pusher_tradedata.bind('update', function (res) {
 					$scope.$apply(function() {
@@ -172,3 +177,29 @@ apps.controller('ngController', ['$scope', '$http', 'services', function ($scope
 	}
 }]);
 
+document.addEventListener("deviceready", function() {
+	if (/(android)/i.test(navigator.userAgent)) { // for android & amazon-fireos
+		admobid = {
+			banner: 'Y2EtYXBwLXB1Yi0zODQ4NDM1MzgyMjc4ODE1Lzk5NTYwNDg1MTY='
+		};
+	}
+
+	if (typeof AdMob !== "undefined") {
+		AdMob.createBanner({
+			adId: atob(admobid.banner),
+			position: AdMob.AD_POSITION.BOTTOM_CENTER,
+			isTesting: true,
+			overlap: false,
+			offsetTopBar: false,
+			bgColor: 'black'
+		});
+	}
+
+	window.ga.startTrackerWithId("UA-115095030-1", 30, function () {
+		window.ga.setUserId(device.uuid);
+		window.ga.setAllowIDFACollection(true);
+		window.ga.trackView('Apps');
+	}, function (e) {
+		console.log('onDeviceReady - Error starting GoogleAnalytics');
+	});
+});
