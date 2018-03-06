@@ -122,14 +122,13 @@ apps.controller('ngController', ['$scope', '$http', 'services', function ($scope
 		];
 	}
 
-	setTimeout(function() {
-		$('#overlay-preloader').hide();
-		myApp.dialog.progress();
+	myApp.dialog.progress();
 
-		$http.get('https://api2.bitcoin.co.id/api/btc_idr/webdata').then(function (res) {
+	$http.get('https://api2.bitcoin.co.id/api/btc_idr/webdata').then(function (res) {
 			if (res.status == 200) {
 				$scope.prices = services.renderData(res.data, $scope.filter);
 				setTimeout(() => {
+					$('#overlay-preloader').hide();
 					$('.price-item').forEach(function (node) {
 						$(this).removeClass('up').removeClass('down');
 					});
@@ -158,7 +157,7 @@ apps.controller('ngController', ['$scope', '$http', 'services', function ($scope
 			});
 		
 		
-	}, 800);
+
 
 	/**
 	 * Method
