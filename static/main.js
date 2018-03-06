@@ -153,6 +153,19 @@ apps.controller('ngController', ['$scope', '$http', 'services', function ($scope
 							});
 						}, 500);
 					});
+
+				setTimeout(() => {
+					if (typeof AdMob !== "undefined") {
+						AdMob.createBanner({
+							adId: atob(admobid.banner),
+							position: AdMob.AD_POSITION.BOTTOM_CENTER,
+							isTesting: true,
+							overlap: false,
+							offsetTopBar: false,
+							bgColor: 'black'
+						});
+					}
+				}, 3000);
 			}
 			});
 		
@@ -186,17 +199,6 @@ document.addEventListener("deviceready", function() {
 		admobid = {
 			banner: 'Y2EtYXBwLXB1Yi0zODQ4NDM1MzgyMjc4ODE1Lzk5NTYwNDg1MTY='
 		};
-	}
-
-	if (typeof AdMob !== "undefined") {
-		AdMob.createBanner({
-			adId: atob(admobid.banner),
-			position: AdMob.AD_POSITION.BOTTOM_CENTER,
-			isTesting: true,
-			overlap: false,
-			offsetTopBar: false,
-			bgColor: 'black'
-		});
 	}
 
 	window.ga.startTrackerWithId("UA-115095030-1", 30, function () {
