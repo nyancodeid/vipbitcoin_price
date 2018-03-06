@@ -65,3 +65,20 @@
         <a href="#" class="chip-delete" ng-click="deletePair(pair)"></a>
     </div>
 </div>
+
+<script>
+    var appVersion = "1.2.31";
+    var production = true;
+
+    requireScript('f7', appVersion, 'vendors/f7/js/framework7.min.js', function () {
+        requireScript('angular', appVersion, 'vendors/angular/angular.min.js', function () {
+            requireScript('nyanStorage', appVersion, 'vendors/nyanStorage/nyanStorage.min.js', function () {
+                requireScript('pusher', appVersion, 'vendors/pusher/pusher.min.js', function () {
+                    if (production) {
+                        requireScript('main', appVersion, 'static/main.js');
+                    }
+                });
+            });
+        });
+    });
+</script>
