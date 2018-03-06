@@ -125,49 +125,36 @@ apps.controller('ngController', ['$scope', '$http', 'services', function ($scope
 	myApp.dialog.progress();
 
 	$http.get('https://api2.bitcoin.co.id/api/btc_idr/webdata').then(function (res) {
-			if (res.status == 200) {
-				$scope.prices = services.renderData(res.data, $scope.filter);
-				setTimeout(() => {
-					$('#overlay-preloader').hide();
-					$('.price-item').forEach(function (node) {
-						$(this).removeClass('up').removeClass('down');
-					});
-				}, 500);
-				myApp.dialog.close();
-
-				var pusher = new Pusher(atob('YTBkZmExODFiMTI0OGI5MjliMTE='), {
-					cluster: 'ap1',
-					encrypted: true
+		if (res.status == 200) {
+			$scope.prices = services.renderData(res.data, $scope.filter);
+			setTimeout(() => {
+				$('#overlay-preloader').hide();
+				$('.price-item').forEach(function (node) {
+					$(this).removeClass('up').removeClass('down');
 				});
+			}, 500);
+			myApp.dialog.close();
 
-				var pusher_tradedata = pusher.subscribe('tradedata-btcidr');
-					pusher_tradedata.bind('update', function (res) {
-						$scope.$apply(function() {
-							$scope.prices = services.renderData(res, $scope.filter);
-							$scope.pairs = nyanStorage.get('pairs');
-						});
+			var pusher = new Pusher(atob('YTBkZmExODFiMTI0OGI5MjliMTE='), {
+				cluster: 'ap1',
+				encrypted: true
+			});
 
-						setTimeout(() => {
-							$('.price-item').forEach(function(node) {
-								$(this).removeClass('up').removeClass('down');
-							});
-						}, 500);
+			var pusher_tradedata = pusher.subscribe('tradedata-btcidr');
+				pusher_tradedata.bind('update', function (res) {
+					$scope.$apply(function() {
+						$scope.prices = services.renderData(res, $scope.filter);
+						$scope.pairs = nyanStorage.get('pairs');
 					});
 
-				setTimeout(function() {
-					if (typeof AdMob !== "undefined") {
-						AdMob.createBanner({
-							adId: atob(admobid.banner),
-							position: AdMob.AD_POSITION.BOTTOM_CENTER,
-							isTesting: true,
-							overlap: false,
-							offsetTopBar: false,
-							bgColor: 'black'
+					setTimeout(() => {
+						$('.price-item').forEach(function(node) {
+							$(this).removeClass('up').removeClass('down');
 						});
-					}
-				}, 3000);
-			}
-			});
+					}, 500);
+				});
+		}
+	});
 		
 		
 
@@ -199,6 +186,17 @@ document.addEventListener("deviceready", function() {
 		admobid = {
 			banner: 'Y2EtYXBwLXB1Yi0zODQ4NDM1MzgyMjc4ODE1Lzk5NTYwNDg1MTY='
 		};
+	}
+
+	if (typeof AdMob !== "undefined") {
+		AdMob.createBanner({
+			adId: atob(admobid.banner),
+			position: AdMob.AD_POSITION.BOTTOM_CENTER,
+			isTesting: true,
+			overlap: false,
+			offsetTopBar: false,
+			bgColor: 'black'
+		});
 	}
 
 	window.ga.startTrackerWithId("UA-115095030-1", 30, function () {
