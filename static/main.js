@@ -6,8 +6,6 @@ var myApp = new Framework7({
 	root: '#app',
 	theme: 'auto'
 });
-myApp.dialog.progress();
-
 
 var apps = angular.module('application', []);
 
@@ -104,8 +102,6 @@ apps.controller('ngController', ['$scope', '$http', 'services', function ($scope
 		isBitcoin: true
 	};
 	$scope.pairs = [];
-
-	$('#overlay-preloader').hide();
 	
 	if (nyanStorage.isAvailable('filter')) {
 		$scope.filter = nyanStorage.get('filter');
@@ -126,36 +122,43 @@ apps.controller('ngController', ['$scope', '$http', 'services', function ($scope
 		];
 	}
 
-	$http.get('https://api2.bitcoin.co.id/api/btc_idr/webdata').then(function (res) {
-		if (res.status == 200) {
-			$scope.prices = services.renderData(res.data, $scope.filter);
-			setTimeout(() => {
-				$('.price-item').forEach(function (node) {
-					$(this).removeClass('up').removeClass('down');
-				});
-			}, 500);
-			myApp.dialog.close();
+	setTimeout(function() {
+		$('#overlay-preloader').hide();
+		myApp.dialog.progress();
 
-			var pusher = new Pusher(atob('YTBkZmExODFiMTI0OGI5MjliMTE='), {
-				cluster: 'ap1',
-				encrypted: true
-			});
-
-			var pusher_tradedata = pusher.subscribe('tradedata-btcidr');
-				pusher_tradedata.bind('update', function (res) {
-					$scope.$apply(function() {
-						$scope.prices = services.renderData(res, $scope.filter);
-						$scope.pairs = nyanStorage.get('pairs');
+		$http.get('https://api2.bitcoin.co.id/api/btc_idr/webdata').then(function (res) {
+			if (res.status == 200) {
+				$scope.prices = services.renderData(res.data, $scope.filter);
+				setTimeout(() => {
+					$('.price-item').forEach(function (node) {
+						$(this).removeClass('up').removeClass('down');
 					});
+				}, 500);
+				myApp.dialog.close();
 
-					setTimeout(() => {
-						$('.price-item').forEach(function(node) {
-							$(this).removeClass('up').removeClass('down');
-						});
-					}, 500);
+				var pusher = new Pusher(atob('YTBkZmExODFiMTI0OGI5MjliMTE='), {
+					cluster: 'ap1',
+					encrypted: true
 				});
-		}
-	});
+
+				var pusher_tradedata = pusher.subscribe('tradedata-btcidr');
+					pusher_tradedata.bind('update', function (res) {
+						$scope.$apply(function() {
+							$scope.prices = services.renderData(res, $scope.filter);
+							$scope.pairs = nyanStorage.get('pairs');
+						});
+
+						setTimeout(() => {
+							$('.price-item').forEach(function(node) {
+								$(this).removeClass('up').removeClass('down');
+							});
+						}, 500);
+					});
+			}
+			});
+		
+		
+	}, 800);
 
 	/**
 	 * Method
