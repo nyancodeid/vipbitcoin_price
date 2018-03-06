@@ -154,7 +154,7 @@ apps.controller('ngController', ['$scope', '$http', 'services', function ($scope
 						}, 500);
 					});
 
-				setTimeout(() => {
+				setTimeout(function() {
 					if (typeof AdMob !== "undefined") {
 						AdMob.createBanner({
 							adId: atob(admobid.banner),
