@@ -38,8 +38,6 @@
       <icon density="xxxhdpi" src="res/icon/android/xxxhdpi.png"/>
   </platform>
 
-  <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
-
   <allow-intent href="http://*/*" />
   <allow-intent href="https://*/*" />
   <allow-intent href="tel:*" />

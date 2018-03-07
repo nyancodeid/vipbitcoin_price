@@ -88,6 +88,10 @@
     padding-right: 8px;
 }
 
+.padding-8 {
+    padding: 8px !important;
+}
+
 .price-item {
     transition: .2s ease-out;
 }
@@ -108,3 +112,21 @@ body.theme-dark .price-item.down {
     padding: 8px !important;
 }
 
+/* Voucher */
+.voucher-item {
+    padding: 8px 16px;
+    border-bottom: 1px solid #9E9E9E;
+}
+.voucher-item .badge {
+    font-size: 14px;
+}
+.voucher-item .big-font {
+    font-size: medium;
+}
+.voucher-item .date-time {
+    color: #9E9E9E;
+    padding: 8px 0;
+}
+.voucher-item .subtitle {
+    color: #ef6e38;
+}

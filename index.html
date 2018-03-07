@@ -54,6 +54,9 @@
                         <a href="" class="link icon-only" ng-click="toggleTheme()">
                             <i class="material-icons">palette</i>
                         </a>
+                        <a href="" class="link icon-only" ng-click="openVoucherDialog()">
+                            <i class="material-icons">notifications_active</i>
+                        </a>
                         <a href="" class="link icon-only" ng-click="openFilterDialog()">
                             <i class="material-icons">filter_list</i>
                         </a>
@@ -92,7 +95,7 @@
         </div>
 		
 		<!-- Popup -->
-		<div class="popup" id="my-popup">
+		<div class="popup" id="my-filter-dialog">
 			<div class="view">
 				<div class="page">
 					<div class="navbar">
@@ -123,7 +126,64 @@
 					</div>
 				</div>
 			</div>
-		</div>
+        </div>
+        <!-- Popup -->
+        <div class="popup" id="my-vouchers-dialog">
+            <div class="view">
+                <div class="page">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="title">Vouchers</div>
+                            <div class="right">
+                                <a href="#" class="link icon-only popup-close">
+                                    <i class="material-icons">close</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-content">
+                        <div class="card">
+                            <div class="card-header">
+                                <div>Vouchers</div>
+                            </div>
+                            <div class="card-content">
+                                <div class="accordion-list">
+                                    <div class="voucher-item accordion-item content-block" ng-repeat="voucher in vouchers">
+                                        <a href="#" class="item-link">
+                                            <div class="row big-font">
+                                                <div class="col">
+                                                    <b>ID#{{voucher.id}}</b>
+                                                </div>
+                                                <div class="col" align="right">
+                                                    <span class="text-color-green">
+                                                        <b>{{ voucher.value }}</b>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <span class="badge bg-color-green">Success</span>
+                                            <div class="date-time">
+                                                <i class="material-icons small">date_range</i> {{ voucher.onSubmit }}
+                                            </div>
+                                        </a>
+                                        <div class="accordion-item-content">
+                                            <div>
+                                                <div class="subtitle">Code</div>
+                                                <span>{{ voucher.voucher }}</span>
+                                            </div>
+                                            <div>
+                                                <div class="subtitle">Catatan</div>
+                                                <span>{{ voucher.note }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 	</div>
 
 	<!-- hybrid engine -->
@@ -145,9 +205,10 @@
             return suppressErrorAlert;
         };
     </script>
+    <script src="vendors/f7/js/framework7.plugin.min.js"></script>
     <script src="vendors/nyanStorage/nyanStorage.min.js"></script>
     <script src="vendors/pusher/pusher.min.js"></script>
     
-    <script defer src="static/main.min.js"></script>
+    <script defer src="static/main.js"></script>
 </body>
 </html>
