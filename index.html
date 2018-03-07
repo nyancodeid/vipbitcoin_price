@@ -149,20 +149,22 @@
                             <div class="card-content">
                                 <div class="accordion-list">
                                     <div class="voucher-item accordion-item content-block" ng-repeat="voucher in vouchers">
-                                        <a href="#" class="item-link">
-                                            <div class="row big-font">
-                                                <div class="col">
-                                                    <b>ID#{{voucher.id}}</b>
+                                        <a href="#" class="item-content item-link">
+                                            <div class="item-inner">
+                                                <div class="row big-font">
+                                                    <div class="col">
+                                                        <b>ID#{{voucher.id}}</b>
+                                                    </div>
+                                                    <div class="col" align="right">
+                                                        <span class="text-color-green">
+                                                            <b>Rp. {{ voucher.value }}</b>
+                                                        </span>
+                                                    </div>
                                                 </div>
-                                                <div class="col" align="right">
-                                                    <span class="text-color-green">
-                                                        <b>Rp. {{ voucher.value }}</b>
-                                                    </span>
+                                                <span class="badge" ng-class="{'bg-color-orange': !voucher.isUsed, 'bg-color-green': voucher.isUsed}">{{ voucher.status }}</span>
+                                                <div class="date-time">
+                                                    <i class="material-icons small">date_range</i> {{ voucher.onSubmit }}
                                                 </div>
-                                            </div>
-                                            <span class="badge" ng-class="{'bg-color-orange': !voucher.isUsed, 'bg-color-green': voucher.isUsed}">{{ voucher.status }}</span>
-                                            <div class="date-time">
-                                                <i class="material-icons small">date_range</i> {{ voucher.onSubmit }}
                                             </div>
                                         </a>
                                         <div class="accordion-item-content">
@@ -181,7 +183,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                        
                             </div>
                         </div>
                     </div>
