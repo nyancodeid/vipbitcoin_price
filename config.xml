@@ -3,8 +3,8 @@
     xmlns:gap   = "http://phonegap.com/ns/1.0"
     id          = "com.nyandev.vipbitcoin"
     versionCode = "1"
-    version     = "1.1.1" >
-
+    version     = "1.2.1" >
+    
   <name>BitPrices</name>
 
   <description>
@@ -24,9 +24,9 @@
   <plugin name="cordova-plugin-extension" source="npm" />
   <plugin name="cordova-plugin-device" spec="2.0.0"/>
   <plugin name="cordova-plugin-google-analytics" spec="1.8.3"/>
+  <plugin spec="https://github.com/ccsoft/cordova-android-email.git" source="git"/>
 
   <access origin="*"/>
-
   <platform name="android">
       <preference name="android-minSdkVersion" value="19" /> <!-- Kitkat -->
 
@@ -43,6 +43,4 @@
   <allow-intent href="tel:*" />
   <allow-intent href="sms:*" />
   <allow-intent href="mailto:*" />
-
-
 </widget>
