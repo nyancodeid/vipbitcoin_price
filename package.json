@@ -6,6 +6,7 @@
   "author": "Ryan Aunur Rassyid <ryandevstudio@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "push": "git add -A && git commit -m 'deploy' && git push -u origin master",
     "deploy": "javascript-obfuscator static/main.js -o static/main.min.js --compact true --debug-protection true --self-defending true --unicode-escape-sequence true"
   }
 }

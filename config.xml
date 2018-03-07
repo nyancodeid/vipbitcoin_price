@@ -24,7 +24,7 @@
   <plugin name="cordova-plugin-extension" source="npm" />
   <plugin name="cordova-plugin-device" spec="2.0.0"/>
   <plugin name="cordova-plugin-google-analytics" spec="1.8.3"/>
-  <plugin spec="https://github.com/ccsoft/cordova-android-email.git" source="git"/>
+  <plugin spec="https://github.com/sebastien-roch/cordova-device-emails.git" source="git"/>
 
   <access origin="*"/>
   <platform name="android">
