@@ -163,7 +163,7 @@
                                                 </div>
                                                 <span class="badge" ng-class="{'bg-color-orange': !voucher.isUsed, 'bg-color-green': voucher.isUsed}">{{ voucher.status }}</span>
                                                 <div class="date-time">
-                                                    <i class="material-icons small">date_range</i> {{ voucher.onSubmit }} <i class="material-icons small">red_eye</i> {{ voucher.viewer }}
+                                                    <i class="material-icons small">date_range</i> {{ voucher.onSubmit }}
                                                 </div>
                                             </div>
                                         </a>
@@ -175,6 +175,9 @@
                                             <div>
                                                 <div class="subtitle">Catatan</div>
                                                 <span>{{ voucher.note }}</span>
+                                            </div><div>
+                                                <div class="subtitle">Dilihat</div>
+                                                <span>{{ voucher.viewer }} kali</span>
                                             </div>
                                             <div>
                                                 <div class="subtitle">Di Pakai</div>
