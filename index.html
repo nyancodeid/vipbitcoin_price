@@ -156,23 +156,27 @@
                                                 </div>
                                                 <div class="col" align="right">
                                                     <span class="text-color-green">
-                                                        <b>{{ voucher.value }}</b>
+                                                        <b>Rp. {{ voucher.value }}</b>
                                                     </span>
                                                 </div>
                                             </div>
-                                            <span class="badge bg-color-green">Success</span>
+                                            <span class="badge" ng-class="{'bg-color-orange': !voucher.isUsed, 'bg-color-green': voucher.isUsed}">{{ voucher.status }}</span>
                                             <div class="date-time">
                                                 <i class="material-icons small">date_range</i> {{ voucher.onSubmit }}
                                             </div>
                                         </a>
                                         <div class="accordion-item-content">
                                             <div>
-                                                <div class="subtitle">Code</div>
+                                                <div class="subtitle">Voucher</div>
                                                 <span>{{ voucher.voucher }}</span>
                                             </div>
                                             <div>
                                                 <div class="subtitle">Catatan</div>
                                                 <span>{{ voucher.note }}</span>
+                                            </div>
+                                            <div>
+                                                <div class="subtitle">Di Pakai</div>
+                                                <span>{{ voucher.usedBy }}</span>
                                             </div>
                                         </div>
                                     </div>
