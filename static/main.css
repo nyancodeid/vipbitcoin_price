@@ -91,6 +91,9 @@
 .padding-8 {
     padding: 8px !important;
 }
+.text-small {
+    font-size: small;
+}
 
 .price-item {
     transition: .2s ease-out;
